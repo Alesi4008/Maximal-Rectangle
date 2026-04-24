@@ -1,6 +1,7 @@
 #include "maximal_rectangle.h"
 #include <iostream>
 #include <algorithm>
+#include <stack>
 
 int MaximalRectangleSolucion::maximalRectangle(std::vector<std::vector<char>>& matrix) {
     if (matrix.empty() || matrix[0].empty()) return 0;
@@ -25,11 +26,35 @@ int MaximalRectangleSolucion::maximalRectangle(std::vector<std::vector<char>>& m
             std::cout << h << " ";
         }
         std::cout << "]" << std::endl;
+        max_area = std::max(max_area, largestRectangleArea(heights));
     }
-
     return max_area;
 }
 
 int MaximalRectangleSolucion::largestRectangleArea(std::vector<int>& heights) {
-    return 0; 
+    std::stack<int> s; 
+    int max_area = 0;
+    int m = heights.size();
+
+    for (int i = 0; i <= m; i++) {
+        int current_height = (i == m) ? 0 : heights[i];
+
+        while (!s.empty() && current_height < heights[s.top()]) {
+            int height = heights[s.top()];
+            s.pop();
+
+            int width;
+            if (s.empty()) {
+                width = i; 
+            } else {
+                width = i - s.top() - 1; 
+            }
+
+            max_area = std::max(max_area, height * width);
+        }
+
+        s.push(i);
+    }
+
+    return max_area;
 }
