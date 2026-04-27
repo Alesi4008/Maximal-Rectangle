@@ -2,59 +2,55 @@
 #include <iostream>
 #include <algorithm>
 #include <stack>
-
+//Implementacion del metodo maximalRectangle 
 int MaximalRectangleSolucion::maximalRectangle(std::vector<std::vector<char>>& matrix) {
     if (matrix.empty() || matrix[0].empty()) return 0;
-
     int n = matrix.size();
     int m = matrix[0].size();
-    
-    std::vector<int> heights(m, 0);
-    int max_area = 0;
-
+    std::vector<int> alturas(m, 0);
+    int area_max = 0;
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < m; j++) {
             if (matrix[i][j] == '1') {
-                heights[j]++; 
+                alturas[j]++; 
             } else {
-                heights[j] = 0; 
+                alturas[j] = 0; 
             }
         }
-
         std::cout << "Histograma acumulado en la fila " << i << ": [ ";
-        for (int h : heights) {
+        for (int h : alturas) {
             std::cout << h << " ";
         }
         std::cout << "]" << std::endl;
-        max_area = std::max(max_area, largestRectangleArea(heights));
+        area_max = std::max(area_max, largestRectangleArea(alturas));
     }
-    return max_area;
+    return area_max;
 }
-
-int MaximalRectangleSolucion::largestRectangleArea(std::vector<int>& heights) {
+//Implementacion del metodo largestRectangleArea
+int MaximalRectangleSolucion::largestRectangleArea(std::vector<int>& alturas) {
     std::stack<int> s; 
-    int max_area = 0;
-    int m = heights.size();
-
+    int area_max = 0;
+    int m = alturas.size();
     for (int i = 0; i <= m; i++) {
-        int current_height = (i == m) ? 0 : heights[i];
-
-        while (!s.empty() && current_height < heights[s.top()]) {
-            int height = heights[s.top()];
-            s.pop();
-
-            int width;
-            if (s.empty()) {
-                width = i; 
-            } else {
-                width = i - s.top() - 1; 
-            }
-
-            max_area = std::max(max_area, height * width);
+        int altura_actual;
+        if (i == m) {
+            altura_actual = 0;
+        } else {
+            altura_actual = alturas[i]; 
         }
-
+        //INVARIANTE: La pila contiene indices de barras en orden creciente de altura 
+        while (!s.empty() && altura_actual < alturas[s.top()]) {
+            int height = alturas[s.top()];
+            s.pop();
+            int ancho;
+            if (s.empty()) {
+                ancho = i; 
+            } else {
+                ancho = i - s.top() - 1; 
+            }
+            area_max = std::max(area_max, height * ancho);
+        }
         s.push(i);
     }
-
-    return max_area;
+    return area_max;
 }

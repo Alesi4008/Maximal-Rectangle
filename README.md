@@ -23,6 +23,7 @@ El problema se resuelve tratando cada fila de la matriz binaria como la base de 
 
 ### Invariante o idea clave
 El invariante principal recae en la Pila Monotónica: la pila siempre almacena los índices de las columnas de tal manera que las alturas correspondientes a esos índices están en orden estrictamente creciente. Esto garantiza que podamos calcular el límite izquierdo y derecho de cualquier rectángulo en expansión.
+
 ### Archivos relevantes
 - include/
   -maximal_rectangle.h
@@ -39,18 +40,17 @@ El invariante principal recae en la Pila Monotónica: la pila siempre almacena l
 
 ### Compilación
 ```bash
-cmake -S . -B build
+cmake -G "MinGW Makefiles" -S . -B build
 cmake --build build
 ```
 
 ### Ejecución
 ```bash
-.\build\Debug\maximal_rectangle.exe
+.\build\maximal_rectangle.exe
 ```
 
 ### Casos de prueba
 Describe al menos 3 casos:
-
 1. Matriz estándar con rectángulos internos de '1's.
 2. Matriz completamente vacía o con un solo elemento ('0' o '1').
 3. Matriz llena únicamente de '0's (el área máxima debe ser 0).
