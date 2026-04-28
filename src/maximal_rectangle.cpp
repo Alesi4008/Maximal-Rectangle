@@ -40,7 +40,7 @@ int MaximalRectangleSolucion::largestRectangleArea(std::vector<int>& alturas) {
         }
         //INVARIANTE: La pila contiene indices de barras en orden creciente de altura 
         while (!s.empty() && altura_actual < alturas[s.top()]) {
-            int height = alturas[s.top()];
+            int altura = alturas[s.top()];
             s.pop();
             int ancho;
             if (s.empty()) {
@@ -48,7 +48,7 @@ int MaximalRectangleSolucion::largestRectangleArea(std::vector<int>& alturas) {
             } else {
                 ancho = i - s.top() - 1; 
             }
-            area_max = std::max(area_max, height * ancho);
+            area_max = std::max(area_max, altura * ancho);
         }
         s.push(i);
     }
