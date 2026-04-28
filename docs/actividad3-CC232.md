@@ -2,7 +2,6 @@
 
 ## Integrantes
 
-- Marco Antonio Huamani Bonifacio - 20232741D
 - Yaimar Alexis Cabello Quevedo - 20244712D
 
 ## Bloque 1: Preguntas de reflexión
