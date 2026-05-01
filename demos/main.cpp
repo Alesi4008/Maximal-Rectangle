@@ -1,6 +1,12 @@
 #include <iostream>
 #include <vector>
 #include "maximal_rectangle.h"
+void escribir(std::vector<std::vector<char>> matriz , MaximalRectangleSolucion s){
+    int area1 = s.maximalRectangle(matriz);
+    std::cout << "=================================================\n";
+    std::cout << "AREA MAXIMA ENCONTRADA: " << area1 << "\n";
+    std::cout << "=================================================\n\n";
+}
 int main() {
     std::cout << "=================================================\n";
     std::cout << "   Prueba del Algoritmo: Maximal Rectangle\n";
@@ -30,5 +36,7 @@ int main() {
     std::cout << "=================================================\n";
     std::cout << "AREA MAXIMA ENCONTRADA: " << area_unos << "\n";
     std::cout << "=================================================\n";
+    std::vector<std::vector<char>> matriz_uno = {{'1'}};
+    escribir(matriz_uno , s);
     return 0;
 }

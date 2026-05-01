@@ -29,6 +29,7 @@ int MaximalRectangleSolucion::maximalRectangle(std::vector<std::vector<char>>& m
 //Implementacion del metodo largestRectangleArea
 int MaximalRectangleSolucion::largestRectangleArea(std::vector<int>& alturas) {
     std::stack<int> s; 
+    int Operaciones = 0;
     int area_max = 0;
     int m = alturas.size();
     for (int i = 0; i <= m; i++) {
@@ -40,6 +41,8 @@ int MaximalRectangleSolucion::largestRectangleArea(std::vector<int>& alturas) {
         }
         //INVARIANTE: La pila contiene indices de barras en orden creciente de altura 
         while (!s.empty() && altura_actual < alturas[s.top()]) {
+            std::cout << "Hallando el area parcial haciendo uso de la pila acumulada \n";
+            Operaciones ++;
             int altura = alturas[s.top()];
             s.pop();
             int ancho;
@@ -51,6 +54,7 @@ int MaximalRectangleSolucion::largestRectangleArea(std::vector<int>& alturas) {
             area_max = std::max(area_max, altura * ancho);
         }
         s.push(i);
+        std::cout << "Numero de veces que se ejecuto la operacion while: " << Operaciones << std::endl ; 
     }
     return area_max;
 }
