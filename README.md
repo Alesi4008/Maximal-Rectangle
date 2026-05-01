@@ -35,6 +35,8 @@ El invariante principal recae en la Pila Monotónica: la pila siempre almacena l
 - -tests/
   -test.cpp
 - docs/
+- video/
+ -video.mp4
   -Actividad1_semana1.md
   -Actividad2_semana2.md
   -Actividad3_semana3.md
