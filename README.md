@@ -46,7 +46,9 @@ cmake --build build
 
 ### Ejecución
 ```bash
-.\build\maximal_rectangle.exe
+.\build\main_ejecutable.exe
+.\build\tests_ejecutable.exe
+.\build\benchmark_ejecutable.exe
 ```
 
 ### Casos de prueba

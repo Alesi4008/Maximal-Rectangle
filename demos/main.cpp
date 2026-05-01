@@ -24,7 +24,7 @@ int main() {
     std::cout << "=================================================\n";
     std::cout << "AREA MAXIMA ENCONTRADA: " << area_vacia << "\n";
     std::cout << "=================================================\n\n";
-    std::vector<std::vector<char>> matriz_unos = {{'1','1','1'},{'1','1','1'}};
+    std::vector<std::vector<char>> matriz_unos = {{'1','1','1','1'},{'1','1','1'}};
     std::cout << "Procesando matriz de puros unos...\n";
     int area_unos = s.maximalRectangle(matriz_unos);
     std::cout << "=================================================\n";
