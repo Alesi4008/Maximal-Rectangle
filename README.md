@@ -29,14 +29,20 @@ El invariante principal recae en la Pila Monotónica: la pila siempre almacena l
   -maximal_rectangle.h
 - src/
   -maximal_rectangle.cpp
-- tests/
+-benchmarks/
+ -benchmark.cpp
 - demos/
+- -tests/
+  -test.cpp
 - docs/
+- video/
+ -video.mp4
   -Actividad1_semana1.md
   -Actividad2_semana2.md
   -Actividad3_semana3.md
 - CMakeLists.txt
 - README.md
+- .gitignore
 
 ### Compilación
 ```bash
